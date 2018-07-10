@@ -1,3 +1,36 @@
+<h1>Submit an Article</h1>
+
 <p>
-  submit-article works!
+	Use this form to submit a link to an article or a file (like one in Google Drive) that can be read by one of our Angular
+	experts to help you out. We will get to your article as soon as possible, and we'll email you back at the email address
+	you provide with any feedback we have.
 </p>
+
+<form [formGroup]="articleForm" (submit)="submitForm()">
+	<div class="form-group row align-items-center">
+		<label for="email" class="col-sm-4 text-right">Email Address</label>
+		<div class="col-sm-8">
+			<input [ngClass]="{'is-invalid': articleForm.controls['email'].dirty && articleForm.controls['email'].invalid}" class="form-control"
+			 formControlName="email" type="text" required placeholder="Email Address">
+		</div>
+	</div>
+	<div class="form-group row align-items-center">
+		<label for="link" class="col-sm-4 text-right">Link to Article</label>
+		<div class="col-sm-8">
+			<input [ngClass]="{'is-invalid': articleForm.controls['link'].dirty && articleForm.controls['link'].invalid}" class="form-control"
+			 formControlName="link" type="url" required placeholder="Link to article">
+		</div>
+	</div>
+	<div class="form-group row align-items-center">
+		<label for="tags" class="col-sm-4 text-right">Tags (separate by comma)</label>
+		<div class="col-sm-8">
+			<input [ngClass]="{'is-invalid': articleForm.controls['tags'].dirty && articleForm.controls['tags'].invalid}" class="form-control"
+			 formControlName="tags" type="url" placeholder="Separate tags by comma">
+		</div>
+	</div>
+	<div class="form-group row align-items-center">
+		<div class="col text-right">
+			<input [disabled]="articleForm.invalid" type="submit" class="btn btn-primary" value="Submit Article">
+		</div>
+	</div>
+</form>
