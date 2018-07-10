@@ -10,6 +10,7 @@ import * as uniq from 'lodash.uniq';
 })
 export class SubmitArticleComponent implements OnInit {
 	public article: ArticleSubmission = new ArticleSubmission();
+	public submitted: boolean;
 	public articleForm: FormGroup = new FormGroup({
 		email: new FormControl(),
 		link: new FormControl(),
@@ -30,5 +31,7 @@ export class SubmitArticleComponent implements OnInit {
 					.map(tag => tag.toLowerCase()),
 			),
 		};
+		this.submitted = true;
+		this.articleForm.reset();
 	}
 }
